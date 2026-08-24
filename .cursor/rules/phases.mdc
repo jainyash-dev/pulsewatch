@@ -1,0 +1,17 @@
+---
+description: Implement only the current development phase; do not skip ahead
+alwaysApply: true
+---
+
+# Phases
+
+Read `docs/development/phases.md` before writing code.
+
+Phase 0 (docs) is **complete**. Next implementation, when asked, is **Phase 1 Foundation** only:
+
+- Monorepo, Compose, Prisma plumbing, health, logging, CI
+- **Not** JWT, ingest, BullMQ processors, dashboard charts, SDK
+
+Do not implement Phase N+1 while delivering Phase N. Do not build `apps/sdk-node` before Phase 8.
+
+Order: foundation → auth → ingest → worker → query/UI → alerts → notify → SDK → harden → deploy.

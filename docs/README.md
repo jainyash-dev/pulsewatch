@@ -14,7 +14,7 @@ The original `Project_Guide.md` brief has been retired. Do not recreate a single
 
 ## Documentation batches
 
-Docs are written in batches **before** application code. Do not start Phase 1 Foundation until Batches A–E are complete.
+Docs batches A–E are **complete**. Do not start Phase 1 Foundation until the human asks for it.
 
 | Batch | Status | Contents |
 |---|---|---|
@@ -22,7 +22,7 @@ Docs are written in batches **before** application code. Do not start Phase 1 Fo
 | **B — Lock the system** | **Done** | ADRs, data flow, tenancy/auth, ingest, processing/queues, alerting/notifications, query/dashboard/SDK |
 | **C — Contracts** | **Done** | Database schema/indexes, API conventions + endpoints, security, reliability |
 | **D — Satellite** | **Done** | SDK, dashboard behavior, observability, local/prod, testing, CI/CD, operations |
-| **E — Agent rules** | Partial | Git: never commit/push/pull/PR. Remaining rules after Batch D |
+| **E — Agent rules** | **Done** | `.cursor/rules/*` + `AGENTS.md`. Git: never commit/push/pull/PR |
 
 ## Tight tree (target)
 

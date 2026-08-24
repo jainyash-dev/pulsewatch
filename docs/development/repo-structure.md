@@ -19,7 +19,7 @@ pulsewatch/
 ├── .github/
 │   └── workflows/
 ├── .cursor/
-│   └── rules/               # Batch E
+│   └── rules/               # Agent rules (Batch E)
 ├── scripts/
 ├── docker-compose.yml
 ├── pnpm-workspace.yaml

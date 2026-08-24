@@ -1,6 +1,6 @@
 # Implementation notes
 
-How to write code once Phase 0 docs are finished. Do not start Phase 1 until Batch E (agent rules) is also done.
+How to write code. Phase 0 (including Batch E) is complete. Start **Phase 1 Foundation** only when asked.
 
 ## Coding standards
 

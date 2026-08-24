@@ -1,0 +1,14 @@
+---
+description: PulseWatch product, stack, and docs as source of truth
+alwaysApply: true
+---
+
+# PulseWatch core
+
+Multi-tenant observability platform. Backend-first. Docs in `docs/` are the source of truth — do not revive `Project_Guide.md` or a parallel spec.
+
+**Stack:** Node 22, TypeScript strict, NestJS (API + worker), Next.js, PostgreSQL, Prisma, Redis, BullMQ, REST `/api/v1`, Jest, Docker Compose, GitHub Actions.
+
+**Do not add:** Kafka, Kubernetes, Elasticsearch, ClickHouse, extra microservices, Python SDK, OpenTelemetry product.
+
+Layout: `docs/development/repo-structure.md`. Principles: `docs/architecture/principles.md`. Index: `docs/README.md`.

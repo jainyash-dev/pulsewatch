@@ -1,0 +1,13 @@
+---
+description: Thin Next.js dashboard; API is the source of truth
+globs: apps/web/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Frontend
+
+Behavior: `docs/dashboard.md`. Poll 10–15s. No WebSockets. No Next.js BFF that reimplements Nest.
+
+- Rewrite `/api/v1` to the API. Access JWT in memory; refresh cookie httpOnly.
+- Hide buttons by role; **never** treat UI as authorization.
+- Clean and professional; do not gold-plate CSS.

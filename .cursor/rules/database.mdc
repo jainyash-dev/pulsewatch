@@ -1,0 +1,21 @@
+---
+description: Prisma schema and tenant-safe queries
+globs: packages/database/**,**/schema.prisma
+alwaysApply: false
+---
+
+# Database
+
+Canonical tables/indexes: `docs/database/schema.md`. Do not invent extra tables.
+
+- Telemetry queries always filter `project_id` (and org membership in the API).
+- Idempotency: UNIQUE `(project_id, event_id)`. Rollups via watermarks, not ingest increments.
+- Prisma for CRUD; parameterized SQL for rollups/percentiles.
+
+```ts
+// BAD
+this.prisma.event.findMany({ where: { id } })
+
+// GOOD
+this.prisma.event.findMany({ where: { id, projectId } })
+```

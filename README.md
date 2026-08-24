@@ -4,7 +4,7 @@ A lightweight, multi-tenant observability and alerting platform (Datadog/Sentry-
 
 This is a **backend-first** portfolio project: event-driven ingest, queues, tenancy, and reliability matter more than dashboard polish.
 
-**Status:** Phase 0 — documentation. Application code has not started. Docs are written in [batches](./docs/README.md); Batches A–D are complete. Batch E (agent rules) remains.
+**Status:** Phase 0 — documentation **complete**. Application code has not started. Next: **Phase 1 Foundation** ([docs/development/phases.md](./docs/development/phases.md)).
 
 ## What it does
 
@@ -61,10 +61,11 @@ Start at **[docs/README.md](./docs/README.md)**.
 | Phases | [docs/development/phases.md](./docs/development/phases.md) |
 | Repo layout | [docs/development/repo-structure.md](./docs/development/repo-structure.md) |
 | Contributing | [CONTRIBUTING.md](./CONTRIBUTING.md) |
+| Agent | [AGENTS.md](./AGENTS.md) |
 
 ## Local setup
 
-Compose, env, and scripts land in **Phase 1 — Foundation** (after Batch E). Target topology: [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md).
+Compose, env, and scripts land in **Phase 1 — Foundation**. Target topology: [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md).
 
 ## License
 

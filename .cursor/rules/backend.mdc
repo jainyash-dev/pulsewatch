@@ -1,0 +1,21 @@
+---
+description: NestJS API and worker conventions
+globs: apps/api/**/*.ts,apps/worker/**/*.ts,packages/shared/**/*.ts
+alwaysApply: false
+---
+
+# Backend
+
+- Controllers thin; business logic in services; DI; DTOs + validation. No Prisma in controllers.
+- HTTP envelope and error codes: `docs/api/conventions.md`. Routes: `docs/api/endpoints.md`.
+- Ingest does not persist, roll up, or send alerts. Worker persist does not evaluate alerts.
+- Structured JSON logs + `requestId`. See `docs/architecture/observability.md`.
+- `$queryRaw` only with bound params.
+
+```ts
+// BAD — logic in controller, swallow errors
+@Post('ingest') async ingest(@Body() body) { try { await this.prisma.event.create({ data: body }) } catch {} }
+
+// GOOD — enqueue only; typed errors
+@Post('ingest') ingest(@Body() dto: IngestDto) { return this.ingestion.accept(dto); }
+```

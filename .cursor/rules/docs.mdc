@@ -1,0 +1,12 @@
+---
+description: Update the owning doc when behavior changes; do not fork a new guide
+alwaysApply: true
+---
+
+# Documentation
+
+`docs/` is canonical. When you change behavior, update the **owning** file (schema, endpoints, ADR, etc.). Link; do not copy.
+
+Do not create a new mega-README or restore `Project_Guide.md`.
+
+Index: `docs/README.md`. Coding notes: `docs/development/implementation.md`.

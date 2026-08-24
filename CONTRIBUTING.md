@@ -6,7 +6,7 @@
 2. Check the [current phase](./docs/development/phases.md). Do not skip ahead.
 3. Follow [architecture principles](./docs/architecture/principles.md) and the locked decisions in the docs index.
 
-Documentation Batches A–E must be complete before Phase 1 Foundation code.
+Documentation batches A–E are complete. Start Phase 1 Foundation only when the human asks.
 
 ## Git
 

@@ -1,0 +1,19 @@
+---
+description: Locked architecture decisions; do not reverse without an ADR
+alwaysApply: true
+---
+
+# Architecture (frozen)
+
+Rationale: `docs/decisions/`. Do not silently reverse.
+
+- Two processes: `apps/api` (HTTP) + `apps/worker` (BullMQ). Modular monolith.
+- Postgres: `events` + `metric_samples` + `request_rollups`. No ES/ClickHouse.
+- Ingest: one `POST /api/v1/ingest` batch. Queue-first **202**. Redis down → **503 + Retry-After**.
+- Alerts: scheduled on rollups, never on ingest HTTP or per-event persist.
+- Dashboard: poll 10–15s. No WebSockets. SSE only if explicitly requested after Phase 5.
+- RBAC: `owner | admin | member | viewer`. Org created on signup.
+- Error groups + fingerprint in MVP.
+- p95 from histogram / short-window percentile, not raw 7-day scans.
+
+Details: `docs/architecture/overview.md`, `ingestion.md`, `processing-and-queues.md`, `alerting-and-notifications.md`.

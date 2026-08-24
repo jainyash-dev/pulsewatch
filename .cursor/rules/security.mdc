@@ -1,0 +1,14 @@
+---
+description: Auth planes, tenant isolation, hashed secrets, webhook SSRF
+alwaysApply: true
+---
+
+# Security
+
+Full policy: `docs/security.md`. Tenancy: `docs/architecture/tenancy-and-auth.md`.
+
+- Two planes: JWT (humans) vs `X-Api-Key` (ingest only). Never store raw passwords or API keys.
+- JWT payload is `sub` only; org is in the URL; check membership every request. Other tenant → **404**.
+- Rate limits in Redis. Ingest/login fail closed if Redis is down (**503**).
+- Webhook URLs: SSRF checks in `docs/security.md` (no private IPs, no redirects, 5s timeout).
+- No secrets in git. Access token not in `localStorage`.

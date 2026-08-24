@@ -1,0 +1,15 @@
+---
+description: Test as we go; tenant isolation is mandatory
+globs: "**/*.{spec,test}.ts"
+alwaysApply: false
+---
+
+# Testing
+
+Plan: `docs/testing.md`. Tests start in Phase 1, not Phase 9.
+
+Must cover tenant isolation: user B gets **404** on user A’s org/project (events, dashboard, keys).
+
+Also required when the feature exists: ingest 503 if Redis down, duplicate `eventId`, webhook SSRF rejected, alert cooldown.
+
+Do not skip isolation tests to “add later.”

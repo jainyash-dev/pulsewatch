@@ -4,7 +4,7 @@ Build incrementally. **Do not start a later phase until the previous phase’s d
 
 Tests start in Phase 1, not Phase 9. Phase 9 is hardening. Alert **design** includes notifications; implement destinations in Phase 6 and delivery in Phase 7.
 
-## Phase 0 — Documentation (current)
+## Phase 0 — Documentation (**complete**)
 
 Replace the old single brief with the tight `docs/` tree.
 
@@ -14,9 +14,9 @@ Replace the old single brief with the tight `docs/` tree.
 | B — Lock the system | **Done** | ADRs, data-flow, tenancy/auth, ingest, processing/queues, alerting |
 | C — Contracts | **Done** | Database, API, security, reliability |
 | D — Satellite | **Done** | SDK, dashboard, observability, local/prod, testing, CI/CD, ops |
-| E — Agent rules | Next | Remaining `.cursor/rules` that point at docs. Git rule already exists: agent never commit/push/pull/PR. |
+| E — Agent rules | **Done** | `.cursor/rules` + `AGENTS.md` |
 
-**No production application code in Phase 0.**
+**No production application code in Phase 0.** Next implementation, when requested: **Phase 1 — Foundation**.
 
 ## Phase 1 — Foundation
 

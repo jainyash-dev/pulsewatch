@@ -1,4 +1,5 @@
 ---
+description: Agent must never commit, push, pull, or open pull requests
 alwaysApply: true
 ---
 # Git is human-owned
