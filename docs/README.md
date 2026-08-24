@@ -10,7 +10,7 @@ The original `Project_Guide.md` brief has been retired. Do not recreate a single
 |---|---|
 | New to the project | [Product requirements](./product/requirements.md) → [MVP](./product/mvp.md) → [Architecture overview](./architecture/overview.md) |
 | About to write code | [Current phase](./development/phases.md) → [Repo structure](./development/repo-structure.md) → [Principles](./architecture/principles.md) |
-| Preparing an interview walkthrough | [Overview](./architecture/overview.md), [data-flow](./architecture/data-flow.md), database (Batch C), reliability (Batch C) |
+| Preparing an interview walkthrough | [Overview](./architecture/overview.md), [data-flow](./architecture/data-flow.md), [schema](./database/schema.md), [reliability](./reliability.md) |
 
 ## Documentation batches
 
@@ -20,7 +20,7 @@ Docs are written in batches **before** application code. Do not start Phase 1 Fo
 |---|---|---|
 | **A — Spine** | **Done** | Product, overview, principles, phases, repo structure, root README |
 | **B — Lock the system** | **Done** | ADRs, data flow, tenancy/auth, ingest, processing/queues, alerting/notifications, query/dashboard/SDK |
-| **C — Contracts** | Not started | Database schema/indexes, API conventions + endpoints, security, reliability |
+| **C — Contracts** | **Done** | Database schema/indexes, API conventions + endpoints, security, reliability |
 | **D — Satellite** | Not started | SDK, dashboard behavior, observability, local/prod, testing, CI/CD, operations |
 | **E — Agent rules** | Partial | Git: never commit/push/pull/PR. Remaining rules after Batch D |
 
@@ -47,12 +47,12 @@ docs/
     local-and-production.md          # D
   decisions/                         # ADRs 000–012
   database/
-    schema.md                        # C
+    schema.md
   api/
-    conventions.md                   # C
-    endpoints.md                     # C
-  security.md                        # C
-  reliability.md                     # C
+    conventions.md
+    endpoints.md
+  security.md
+  reliability.md
   testing.md                         # D
   ci-cd-and-deployment.md            # D
   sdk.md                             # D

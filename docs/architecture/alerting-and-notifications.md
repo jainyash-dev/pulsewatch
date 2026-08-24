@@ -76,7 +76,7 @@ Payload (conceptual):
 
 `notification_deliveries`: status `pending` | `sent` | `failed`, attempts, last status code, last error. Exhausted retries **do not** roll back alert state.
 
-SSRF (full rules in Batch C `docs/security.md`): HTTPS in non-local env, block private/link-local/metadata IPs, DNS resolve then re-check, no unbounded redirects.
+SSRF: [../security.md](../security.md) (HTTPS in non-local env, block private/link-local/metadata IPs, DNS resolve then re-check, no redirects).
 
 ## Spam control
 

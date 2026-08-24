@@ -12,8 +12,8 @@ Replace the old single brief with the tight `docs/` tree.
 |---|---|---|
 | A — Spine | **Done** | Product, overview, principles, phases, repo structure, README |
 | B — Lock the system | **Done** | ADRs, data-flow, tenancy/auth, ingest, processing/queues, alerting |
-| C — Contracts | Next | Database, API, security, reliability |
-| D — Satellite | After C | SDK, dashboard, observability, local/prod, testing, CI/CD, ops |
+| C — Contracts | **Done** | Database, API, security, reliability |
+| D — Satellite | Next | SDK, dashboard, observability, local/prod, testing, CI/CD, ops |
 | E — Agent rules | After D | Remaining `.cursor/rules` that point at docs. Git rule already exists: agent never commit/push/pull/PR. |
 
 **No production application code in Phase 0.**

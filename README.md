@@ -4,7 +4,7 @@ A lightweight, multi-tenant observability and alerting platform (Datadog/Sentry-
 
 This is a **backend-first** portfolio project: event-driven ingest, queues, tenancy, and reliability matter more than dashboard polish.
 
-**Status:** Phase 0 — documentation. Application code has not started. Docs are written in [batches](./docs/README.md); Batches A and B are complete.
+**Status:** Phase 0 — documentation. Application code has not started. Docs are written in [batches](./docs/README.md); Batches A–C are complete.
 
 ## What it does
 
@@ -49,6 +49,10 @@ Start at **[docs/README.md](./docs/README.md)**.
 | Architecture | [docs/architecture/overview.md](./docs/architecture/overview.md) |
 | Data flow | [docs/architecture/data-flow.md](./docs/architecture/data-flow.md) |
 | ADRs | [docs/decisions](./docs/decisions/README.md) |
+| Database | [docs/database/schema.md](./docs/database/schema.md) |
+| API | [docs/api/conventions.md](./docs/api/conventions.md), [endpoints](./docs/api/endpoints.md) |
+| Security | [docs/security.md](./docs/security.md) |
+| Reliability | [docs/reliability.md](./docs/reliability.md) |
 | Engineering rules | [docs/architecture/principles.md](./docs/architecture/principles.md) |
 | Phases | [docs/development/phases.md](./docs/development/phases.md) |
 | Repo layout | [docs/development/repo-structure.md](./docs/development/repo-structure.md) |

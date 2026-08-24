@@ -1,6 +1,6 @@
 # Query, dashboard, and SDK (architecture)
 
-HTTP paths and query params are Batch C. This file locks behavior.
+HTTP paths: [../api/endpoints.md](../api/endpoints.md). This file locks behavior.
 
 ## Query
 

@@ -70,7 +70,7 @@ flowchart TB
 - **Redis:** BullMQ, ingest rate limits, API-key cache, short dashboard cache. AOF enabled locally.
 - **Not in MVP:** Kafka, Elasticsearch, ClickHouse.
 
-Telemetry layout (column/index contracts in Batch C):
+Telemetry layout (columns and indexes: [../database/schema.md](../database/schema.md)):
 
 - `events` — logs, errors, HTTP requests
 - `metric_samples` — custom metrics
@@ -117,7 +117,8 @@ Approved. Rationale: [docs/decisions](../decisions/README.md). Do not silently r
 - Queues: [processing-and-queues.md](./processing-and-queues.md)
 - Alerts: [alerting-and-notifications.md](./alerting-and-notifications.md)
 - Query/UI/SDK: [query-dashboard-sdk.md](./query-dashboard-sdk.md)
-- Batch C: table/column/index contracts and HTTP endpoints
+- Schema: [../database/schema.md](../database/schema.md)
+- HTTP: [../api/endpoints.md](../api/endpoints.md)
 - Batch D: SDK/dashboard/ops/AWS depth
 
 ## Related

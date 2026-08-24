@@ -64,4 +64,4 @@ Email verification is **not** required in MVP.
 
 - [ingestion.md](./ingestion.md)
 - [data-flow.md](./data-flow.md)
-- Batch C will list exact routes in `docs/api/`
+- Routes: [../api/endpoints.md](../api/endpoints.md)

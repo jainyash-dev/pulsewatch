@@ -55,7 +55,7 @@ If `eventId` is missing, the API generates a UUID. The SDK should always send on
 | Stack / payload | 32 KiB |
 | Endpoint string | truncate to a safe length (e.g. 256) |
 
-Over limit → **413** or **400** with a stable error code (Batch C). Do not enqueue a partial batch when the HTTP payload itself is invalid. After enqueue, the worker may skip a single poison event and persist the rest.
+Over limit → **413** `PAYLOAD_TOO_LARGE` or **400** `VALIDATION_ERROR`. Do not enqueue a partial batch when the HTTP payload itself is invalid. After enqueue, the worker may skip a single poison event and persist the rest.
 
 ## Hot path (API)
 
