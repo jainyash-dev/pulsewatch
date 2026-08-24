@@ -10,6 +10,8 @@ Documentation Batches A–E must be complete before Phase 1 Foundation code.
 
 ## Git
 
+The coding agent must **not** commit, push, pull, fetch, or open pull requests. Humans own git history. If you need a message, ask for text only.
+
 - Default branch: `main`
 - Work on `feature/<short-name>`, `fix/<short-name>`, or `refactor/<short-name>`
 - Do **not** use a long-lived `develop` branch

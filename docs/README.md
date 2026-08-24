@@ -10,7 +10,7 @@ The original `Project_Guide.md` brief has been retired. Do not recreate a single
 |---|---|
 | New to the project | [Product requirements](./product/requirements.md) → [MVP](./product/mvp.md) → [Architecture overview](./architecture/overview.md) |
 | About to write code | [Current phase](./development/phases.md) → [Repo structure](./development/repo-structure.md) → [Principles](./architecture/principles.md) |
-| Preparing an interview walkthrough | Overview, data-flow (Batch B), database (Batch C), failure modes (Batch C) |
+| Preparing an interview walkthrough | [Overview](./architecture/overview.md), [data-flow](./architecture/data-flow.md), database (Batch C), reliability (Batch C) |
 
 ## Documentation batches
 
@@ -19,10 +19,10 @@ Docs are written in batches **before** application code. Do not start Phase 1 Fo
 | Batch | Status | Contents |
 |---|---|---|
 | **A — Spine** | **Done** | Product, overview, principles, phases, repo structure, root README |
-| **B — Lock the system** | Not started | ADRs, data flow, tenancy/auth, ingest, processing/queues, alerting/notifications |
+| **B — Lock the system** | **Done** | ADRs, data flow, tenancy/auth, ingest, processing/queues, alerting/notifications, query/dashboard/SDK |
 | **C — Contracts** | Not started | Database schema/indexes, API conventions + endpoints, security, reliability |
 | **D — Satellite** | Not started | SDK, dashboard behavior, observability, local/prod, testing, CI/CD, operations |
-| **E — Agent rules** | Not started | `.cursor/rules/*` pointing at these docs |
+| **E — Agent rules** | Partial | Git: never commit/push/pull/PR. Remaining rules after Batch D |
 
 ## Tight tree (target)
 
@@ -37,15 +37,15 @@ docs/
   architecture/
     overview.md
     principles.md
-    data-flow.md                     # B
-    tenancy-and-auth.md              # B
-    ingestion.md                     # B
-    processing-and-queues.md         # B
-    alerting-and-notifications.md    # B
-    query-dashboard-sdk.md           # B
+    data-flow.md
+    tenancy-and-auth.md
+    ingestion.md
+    processing-and-queues.md
+    alerting-and-notifications.md
+    query-dashboard-sdk.md
     observability.md                 # D
     local-and-production.md          # D
-  decisions/                         # B
+  decisions/                         # ADRs 000–012
   database/
     schema.md                        # C
   api/
@@ -66,7 +66,7 @@ docs/
 
 ## Locked decisions (summary)
 
-Full rationale lands in ADRs (Batch B). Until then, treat these as **approved and frozen**:
+Rationale: [docs/decisions](./decisions/README.md). Treat these as **approved and frozen**:
 
 1. Two deployables: NestJS **API** + NestJS **worker** (modular monolith, not microservices).
 2. Storage: PostgreSQL `events` + `metric_samples` + `request_rollups` (no Elasticsearch/ClickHouse in MVP).

@@ -70,7 +70,7 @@ flowchart TB
 - **Redis:** BullMQ, ingest rate limits, API-key cache, short dashboard cache. AOF enabled locally.
 - **Not in MVP:** Kafka, Elasticsearch, ClickHouse.
 
-Telemetry layout (details in Batch C):
+Telemetry layout (column/index contracts in Batch C):
 
 - `events` — logs, errors, HTTP requests
 - `metric_samples` — custom metrics
@@ -94,7 +94,7 @@ Dashboard → JWT → membership check → lists hit `events` (cursor pagination
 
 ## Locked decisions
 
-Approved. ADRs in Batch B will record options and tradeoffs. Do not silently reverse these.
+Approved. Rationale: [docs/decisions](../decisions/README.md). Do not silently reverse these.
 
 1. API + worker processes (not processors-only-inside-API, not microservices).
 2. Unified `events` + `metric_samples` + `request_rollups`.
@@ -111,9 +111,14 @@ Approved. ADRs in Batch B will record options and tradeoffs. Do not silently rev
 
 ## What this file does not replace
 
-Batch B: data-flow diagrams, tenancy/auth detail, ingest limits, queue names, alert state machine.  
-Batch C: table/column/index contracts and HTTP endpoints.  
-Batch D: SDK/dashboard/ops/AWS depth.
+- Data paths: [data-flow.md](./data-flow.md)
+- Tenancy/auth: [tenancy-and-auth.md](./tenancy-and-auth.md)
+- Ingest: [ingestion.md](./ingestion.md)
+- Queues: [processing-and-queues.md](./processing-and-queues.md)
+- Alerts: [alerting-and-notifications.md](./alerting-and-notifications.md)
+- Query/UI/SDK: [query-dashboard-sdk.md](./query-dashboard-sdk.md)
+- Batch C: table/column/index contracts and HTTP endpoints
+- Batch D: SDK/dashboard/ops/AWS depth
 
 ## Related
 

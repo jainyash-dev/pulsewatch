@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+# Git is human-owned
+
+The coding agent must **never**:
+
+- `git commit`
+- `git push` / `git pull` / `git fetch`
+- `git commit --amend` or rebase
+- Open or update a pull request (`gh pr create`, etc.)
+
+The human owns all git history and remotes. Do not suggest running those commands unless asked, and still do not run them.
+
+Allowed when needed for **local** work: read `git status` / `git diff` / `git log`, and stage or edit files. Do not create commits even if the user later asks in passing — they have banned agent commits.
+
+If a commit message is useful, **print it** for the human to apply themselves.
