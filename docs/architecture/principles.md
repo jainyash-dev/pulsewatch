@@ -32,12 +32,12 @@
 7. Handle errors intentionally; never swallow.
 8. Never commit secrets; configuration via environment variables.
 9. Test important logic **as we build**, especially authorization and tenant isolation.
-10. Design APIs consistently (see Batch C conventions).
+10. Design APIs consistently ([api/conventions.md](../api/conventions.md)).
 11. Add indexes from **access patterns**, not guesswork.
 12. Avoid premature microservices and premature optimization.
 13. Expensive work is asynchronous (persist, rollup, alert, notify).
 14. Background jobs are retryable and **idempotent**.
-15. Design for graceful failure; document it (Batch C reliability).
+15. Design for graceful failure ([reliability.md](../reliability.md)).
 16. Another engineer should understand the system from `docs/` alone.
 17. Same-origin dashboard: Next.js rewrites `/api/v1` to the API (cookies stay simple).
 18. Prisma for CRUD; parameterized raw SQL for rollups and percentiles.

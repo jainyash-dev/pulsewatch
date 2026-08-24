@@ -119,7 +119,9 @@ Approved. Rationale: [docs/decisions](../decisions/README.md). Do not silently r
 - Query/UI/SDK: [query-dashboard-sdk.md](./query-dashboard-sdk.md)
 - Schema: [../database/schema.md](../database/schema.md)
 - HTTP: [../api/endpoints.md](../api/endpoints.md)
-- Batch D: SDK/dashboard/ops/AWS depth
+- SDK / dashboard: [../sdk.md](../sdk.md), [../dashboard.md](../dashboard.md)
+- Local / AWS: [local-and-production.md](./local-and-production.md)
+- Observability: [observability.md](./observability.md)
 
 ## Related
 

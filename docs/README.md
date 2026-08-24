@@ -21,7 +21,7 @@ Docs are written in batches **before** application code. Do not start Phase 1 Fo
 | **A — Spine** | **Done** | Product, overview, principles, phases, repo structure, root README |
 | **B — Lock the system** | **Done** | ADRs, data flow, tenancy/auth, ingest, processing/queues, alerting/notifications, query/dashboard/SDK |
 | **C — Contracts** | **Done** | Database schema/indexes, API conventions + endpoints, security, reliability |
-| **D — Satellite** | Not started | SDK, dashboard behavior, observability, local/prod, testing, CI/CD, operations |
+| **D — Satellite** | **Done** | SDK, dashboard behavior, observability, local/prod, testing, CI/CD, operations |
 | **E — Agent rules** | Partial | Git: never commit/push/pull/PR. Remaining rules after Batch D |
 
 ## Tight tree (target)
@@ -43,8 +43,8 @@ docs/
     processing-and-queues.md
     alerting-and-notifications.md
     query-dashboard-sdk.md
-    observability.md                 # D
-    local-and-production.md          # D
+    observability.md
+    local-and-production.md
   decisions/                         # ADRs 000–012
   database/
     schema.md
@@ -53,15 +53,15 @@ docs/
     endpoints.md
   security.md
   reliability.md
-  testing.md                         # D
-  ci-cd-and-deployment.md            # D
-  sdk.md                             # D
-  dashboard.md                       # D
-  operations.md                      # D
+  testing.md
+  ci-cd-and-deployment.md
+  sdk.md
+  dashboard.md
+  operations.md
   development/
     phases.md
     repo-structure.md
-    implementation.md                # D (coding standards, git recap, local setup)
+    implementation.md
 ```
 
 ## Locked decisions (summary)

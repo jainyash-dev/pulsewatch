@@ -60,7 +60,7 @@ Behavior:
 - Drop-oldest if the in-memory buffer exceeds a cap; `onError` callback; **do not** throw into the host request by default
 - No OpenTelemetry wrapper in MVP
 
-Full public API write-up: Batch D `docs/sdk.md`.
+Full public API: [../sdk.md](../sdk.md). UI: [../dashboard.md](../dashboard.md).
 
 ## Related
 

@@ -4,7 +4,7 @@ A lightweight, multi-tenant observability and alerting platform (Datadog/Sentry-
 
 This is a **backend-first** portfolio project: event-driven ingest, queues, tenancy, and reliability matter more than dashboard polish.
 
-**Status:** Phase 0 — documentation. Application code has not started. Docs are written in [batches](./docs/README.md); Batches A–C are complete.
+**Status:** Phase 0 — documentation. Application code has not started. Docs are written in [batches](./docs/README.md); Batches A–D are complete. Batch E (agent rules) remains.
 
 ## What it does
 
@@ -53,6 +53,10 @@ Start at **[docs/README.md](./docs/README.md)**.
 | API | [docs/api/conventions.md](./docs/api/conventions.md), [endpoints](./docs/api/endpoints.md) |
 | Security | [docs/security.md](./docs/security.md) |
 | Reliability | [docs/reliability.md](./docs/reliability.md) |
+| SDK | [docs/sdk.md](./docs/sdk.md) |
+| Dashboard | [docs/dashboard.md](./docs/dashboard.md) |
+| Testing | [docs/testing.md](./docs/testing.md) |
+| Local / AWS | [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md) |
 | Engineering rules | [docs/architecture/principles.md](./docs/architecture/principles.md) |
 | Phases | [docs/development/phases.md](./docs/development/phases.md) |
 | Repo layout | [docs/development/repo-structure.md](./docs/development/repo-structure.md) |
@@ -60,7 +64,7 @@ Start at **[docs/README.md](./docs/README.md)**.
 
 ## Local setup
 
-Not available yet. Compose, env files, and migrate commands land in **Phase 1 — Foundation** after documentation Batches B–E.
+Compose, env, and scripts land in **Phase 1 — Foundation** (after Batch E). Target topology: [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md).
 
 ## License
 
