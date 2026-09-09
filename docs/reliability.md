@@ -6,8 +6,8 @@ PulseWatch is an observability product; we document failure instead of pretendin
 
 | Endpoint | Meaning |
 |---|---|
-| `GET /api/v1/health/live` | Process up (API or a tiny worker HTTP, or worker logs only — **API must expose live**). Worker: process stays running; optional loopback live later. |
-| `GET /api/v1/health/ready` | Postgres ping + Redis ping. **503** if either fails. ALB/ECS should use this for API. Worker readiness: same checks before taking jobs (BullMQ connection). |
+| `GET /api/v1/health/live` | Process up. **API** exposes this. **Worker has no public HTTP port** in Compose; container `HEALTHCHECK` verifies the Node process (and Redis ping in-process at boot). |
+| `GET /api/v1/health/ready` | API: Postgres ping + Redis ping. **503** if either fails. ECS/ALB uses this for API. Worker readiness: refuse to `run` processors until both pings succeed. |
 
 Do not query `events` on the ready probe.
 

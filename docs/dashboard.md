@@ -12,8 +12,9 @@ Authz is 100% API. Hide buttons by role; never as security.
 | `/` or `/orgs` | Org switcher | `GET /organizations` |
 | `/orgs/[orgId]` | Project list | `GET .../projects` |
 | `/orgs/[orgId]/projects/[projectId]` | Overview KPIs + 3 charts | `dashboard/summary`, `timeseries` |
-| `.../events` | Filterable event list + detail | `GET .../events` |
-| `.../errors` | Error groups + detail | `error-groups` |
+| `.../events` | Filterable list (type tabs: all / log / error / request) + detail | `GET .../events` |
+| `.../errors` | Error groups + detail; W can resolve | `error-groups` including `PATCH` |
+| `.../metrics` | Custom metric samples (short range) | `GET .../metrics` |
 | `.../alerts` | Rules, executions, deliveries | alert endpoints |
 | `.../settings` | Members (if A), keys (if W), destinations (if W) | matching endpoints |
 
@@ -27,6 +28,18 @@ Keep visual design clean and professional. Do not spend the project on animation
 - Top failing endpoints
 
 Range selector: 15m / 1h / 24h / 7d. Optional environment filter.
+
+## Health (canonical)
+
+Derived from the selected range (and environment if set):
+
+| `health` | When |
+|---|---|
+| `healthy` | No requests in range, **or** error rate &lt; 0.05 |
+| `degraded` | Error rate ≥ 0.05 and &lt; 0.20 |
+| `down` | Error rate ≥ 0.20, **or** `requestCount &gt; 0` and every request is 5xx |
+
+Use the same constants in API and UI. Error rate is a **ratio**.
 
 ## Polling
 

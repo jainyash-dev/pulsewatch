@@ -8,6 +8,8 @@
 
 Documentation batches A–E are complete. Start Phase 1 Foundation only when the human asks.
 
+Treat Cursor as a **pair programmer**, not an autonomous engineer. After generated code: read the diff, understand the flow, test, then continue. See `.cursor/rules/understand-before-continue.mdc`.
+
 ## Git
 
 The coding agent must **not** commit, push, pull, fetch, or open pull requests. Humans own git history. If you need a message, ask for text only.

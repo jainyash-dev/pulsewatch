@@ -20,7 +20,28 @@ App → SDK → NestJS API → Redis (BullMQ) → NestJS worker → PostgreSQL
 
 Two processes, one modular monolith. Not a microservice mesh.
 
-Details: [docs/architecture/overview.md](./docs/architecture/overview.md)
+```mermaid
+flowchart LR
+  App[App] --> SDK[SDK]
+  SDK -->|ingest API key| API[NestJS API]
+  Web[Next.js] -->|JWT| API
+  API --> Redis[(Redis)]
+  API --> PG[(PostgreSQL)]
+  Redis --> Worker[NestJS worker]
+  Worker --> PG
+  Worker --> Notify[Email / webhooks]
+```
+
+Details: [docs/architecture/overview.md](./docs/architecture/overview.md). Event flow: [data-flow](./docs/architecture/data-flow.md). Alerts: [alerting](./docs/architecture/alerting-and-notifications.md).
+
+## Key decisions (not the original brief)
+
+- Queue-first **202**; Redis down → **503** (no silent drop)
+- Alerts on a **schedule** from rollups, not per event
+- One batch ingest URL; hashed API keys; tenant **404** isolation
+- Postgres only (no ES/ClickHouse); API + worker, not microservices
+
+ADRs: [docs/decisions](./docs/decisions/README.md). Tradeoffs: [principles](./docs/architecture/principles.md). Coverage vs the old guide: [phase-0-coverage](./docs/development/phase-0-coverage.md).
 
 ## Stack
 
@@ -50,7 +71,7 @@ Start at **[docs/README.md](./docs/README.md)**.
 | Data flow | [docs/architecture/data-flow.md](./docs/architecture/data-flow.md) |
 | ADRs | [docs/decisions](./docs/decisions/README.md) |
 | Database | [docs/database/schema.md](./docs/database/schema.md) |
-| API | [docs/api/conventions.md](./docs/api/conventions.md), [endpoints](./docs/api/endpoints.md) |
+| API | [conventions](./docs/api/conventions.md), [endpoints](./docs/api/endpoints.md), [examples](./docs/api/examples.md) |
 | Security | [docs/security.md](./docs/security.md) |
 | Reliability | [docs/reliability.md](./docs/reliability.md) |
 | SDK | [docs/sdk.md](./docs/sdk.md) |
@@ -59,9 +80,25 @@ Start at **[docs/README.md](./docs/README.md)**.
 | Local / AWS | [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md) |
 | Engineering rules | [docs/architecture/principles.md](./docs/architecture/principles.md) |
 | Phases | [docs/development/phases.md](./docs/development/phases.md) |
+| Phase 0 coverage | [docs/development/phase-0-coverage.md](./docs/development/phase-0-coverage.md) |
 | Repo layout | [docs/development/repo-structure.md](./docs/development/repo-structure.md) |
 | Contributing | [CONTRIBUTING.md](./CONTRIBUTING.md) |
 | Agent | [AGENTS.md](./AGENTS.md) |
+
+## Ingest example
+
+```bash
+curl -s -X POST http://localhost:3001/api/v1/ingest \
+  -H "X-Api-Key: $PULSEWATCH_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{"events":[{"type":"log","message":"boot","severity":"info","environment":"production"}]}'
+```
+
+SDK: [docs/sdk.md](./docs/sdk.md). More curls: [docs/api/examples.md](./docs/api/examples.md).
+
+## Screenshots
+
+Added after Phase 5 (dashboard exists). Until then, architecture and API docs are the walkthrough.
 
 ## Local setup
 

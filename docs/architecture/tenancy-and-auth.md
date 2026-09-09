@@ -23,7 +23,9 @@ Registration **creates** an organization and membership with role `owner` ([ADR 
 | Create/update projects, alert rules, destinations | yes | yes | yes | no |
 | Mint / revoke API keys | yes | yes | yes | no |
 | Add/remove members, change roles (not last owner) | yes | yes* | no | no |
-| Delete organization / transfer ownership | yes | no | no | no |
+| Delete organization | yes | no | no | no |
+
+Ownership transfer is **out of MVP**. There is always at least one `owner` until the org is deleted.
 
 \*Admin cannot remove or demote the last owner, and cannot assign `owner`.
 
@@ -59,6 +61,20 @@ Email verification is **not** required in MVP.
 2. Guessable UUIDs of another tenant’s project return **404**.
 3. Ingest with a revoked or unknown key returns **401**.
 4. Isolation is covered by tests in Phase 2 onward.
+
+## Resource caps (409 `LIMIT_EXCEEDED`)
+
+| Resource | Max |
+|---|---|
+| Projects per organization | 20 |
+| Active (non-revoked) API keys per project | 10 |
+| Alert rules per project | 50 |
+| Destinations per project | 20 |
+| Members per organization | 50 |
+
+## Slugs
+
+Lowercase `[a-z0-9-]+`, length 3–48. If omitted on create, derive from `name` (slugify) and append a short suffix on collision.
 
 ## Related
 

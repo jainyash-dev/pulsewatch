@@ -10,7 +10,7 @@ The original `Project_Guide.md` brief has been retired. Do not recreate a single
 |---|---|
 | New to the project | [Product requirements](./product/requirements.md) → [MVP](./product/mvp.md) → [Architecture overview](./architecture/overview.md) |
 | About to write code | [Current phase](./development/phases.md) → [Repo structure](./development/repo-structure.md) → [Principles](./architecture/principles.md) |
-| Preparing an interview walkthrough | [Overview](./architecture/overview.md), [data-flow](./architecture/data-flow.md), [schema](./database/schema.md), [reliability](./reliability.md) |
+| Preparing an interview walkthrough | [Overview](./architecture/overview.md), [data-flow](./architecture/data-flow.md), [schema](./database/schema.md), [reliability](./reliability.md), [Phase 0 coverage](./development/phase-0-coverage.md) |
 
 ## Documentation batches
 
@@ -22,7 +22,7 @@ Docs batches A–E are **complete**. Do not start Phase 1 Foundation until the h
 | **B — Lock the system** | **Done** | ADRs, data flow, tenancy/auth, ingest, processing/queues, alerting/notifications, query/dashboard/SDK |
 | **C — Contracts** | **Done** | Database schema/indexes, API conventions + endpoints, security, reliability |
 | **D — Satellite** | **Done** | SDK, dashboard behavior, observability, local/prod, testing, CI/CD, operations |
-| **E — Agent rules** | **Done** | `.cursor/rules/*` + `AGENTS.md`. Git: never commit/push/pull/PR |
+| **E — Agent rules** | **Done** | `.cursor/rules/*` + `AGENTS.md`. Git: never commit/push/pull/PR. Understand-before-continue: pair programmer, not autonomous engineer |
 
 ## Tight tree (target)
 
@@ -51,6 +51,7 @@ docs/
   api/
     conventions.md
     endpoints.md
+    examples.md
   security.md
   reliability.md
   testing.md
@@ -62,6 +63,7 @@ docs/
     phases.md
     repo-structure.md
     implementation.md
+    phase-0-coverage.md
 ```
 
 ## Locked decisions (summary)

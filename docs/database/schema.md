@@ -5,7 +5,7 @@ Canonical contract for PostgreSQL + Prisma. Behavior lives in architecture docs;
 - Timestamps: `timestamptz`, store UTC.
 - IDs: UUID (`uuid`).
 - Emails: store lowercased; unique.
-- JSONB: no GIN in MVP.
+- JSONB: no GIN in MVP. Optional `payload.tags` (`string[]`) is **not** a query dimension in MVP.
 - Soft delete: projects/orgs are **hard-deleted** only by owner (cascade telemetry in a job, not a surprise `ON DELETE CASCADE` from org → events in the same request). Prefer `ON DELETE RESTRICT` on telemetry FKs; retention job deletes old events. Org delete: application-level purge then delete org.
 
 Retention: raw `events` + `metric_samples` **14 days**; `request_rollups` **90 days**. `error_groups` kept while the project lives (or until unused — MVP: no auto-delete of groups).
@@ -245,7 +245,7 @@ Dashboard all-environments: `SUM` rows with `endpoint = '__all__'`. Top endpoint
 | `created_at` | timestamptz | |
 | `updated_at` | timestamptz | |
 
-`kind`: `error_count` \| `error_rate` \| `avg_duration_ms` \| `failed_request_count` \| `endpoint_error_rate`.
+`kind`: `error_count` \| `error_rate` \| `avg_duration_ms` \| `endpoint_error_rate`.
 
 ### `alert_destinations`
 

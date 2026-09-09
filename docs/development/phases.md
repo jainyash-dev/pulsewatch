@@ -20,13 +20,13 @@ Replace the old single brief with the tight `docs/` tree.
 
 ## Phase 1 — Foundation
 
-Monorepo (pnpm, Turbo), TypeScript strict, NestJS API, NestJS worker (idle-healthy), Next.js stub, PostgreSQL, Prisma (connection + migrate plumbing), Redis, Mailpit, Docker Compose, env example, ESLint, Prettier, health/live/ready, structured logs, request IDs, basic GitHub Actions.
+Monorepo (pnpm, Turbo), TypeScript strict, NestJS API, NestJS worker (idle-healthy), Next.js stub, PostgreSQL, Prisma (connection + migrate plumbing), Redis, Mailpit, Docker Compose, env example, ESLint, Prettier, health/live/ready, structured logs, request IDs, `@nestjs/swagger` at `/api/docs` (non-prod), basic GitHub Actions.
 
 **Not in Phase 1:** JWT, ingest, BullMQ processors, dashboard charts.
 
 ## Phase 2 — Authentication and multi-tenancy
 
-Register/login/refresh/logout, password hashing, users, organizations, org-on-signup, membership, RBAC, projects, hashed API keys (create/list/revoke). Tenant isolation tests.
+Register/login/refresh/logout, password hashing, users, organizations, org-on-signup, membership, RBAC, projects, hashed API keys (create/list/revoke). Tenant isolation tests. Optional Prisma seed: demo user + org + project (no real secrets).
 
 ## Phase 3 — Event ingestion
 
@@ -70,3 +70,4 @@ Do not build the SDK before ingest and query exist (payloads will churn).
 
 - [mvp.md](../product/mvp.md) — product definition of done
 - [repo-structure.md](./repo-structure.md)
+- [phase-0-coverage.md](./phase-0-coverage.md)

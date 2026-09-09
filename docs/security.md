@@ -18,9 +18,14 @@ Threat model is **portfolio-honest**: stop tenant leaks, stolen keys, brute forc
 
 ## Passwords and JWT
 
-- Argon2id (preferred) with a documented cost. Pepper optional via env `PASSWORD_PEPPER`.
+- Password: **12–128** characters. Argon2id (preferred; memory 64 MiB, time 3, parallelism 1) or bcrypt cost ≥ 12. Pepper optional via `PASSWORD_PEPPER`.
 - Access JWT: HS256, `sub` = user id, `exp` ~15m, secret `JWT_SECRET` ≥ 32 bytes.
-- Refresh: 32+ random bytes, store SHA-256, TTL 7 days, rotate on refresh, reuse of revoked token → revoke **all** sessions for that user (theft signal).
+- Refresh: 32+ random bytes, store SHA-256, TTL 7 days, rotate on refresh, reuse of a revoked/rotated token → revoke **all** sessions for that user (theft signal).
+- Cookie `pw_refresh`: `HttpOnly`; `Secure` in production; `SameSite=Lax`; `Path=/api/v1/auth`; `Max-Age=604800`.
+
+## Input limits (sanitization)
+
+Trim strings. Reject `\u0000`. Truncate ingest fields to documented max sizes rather than storing unbounded text. Forbid unknown JSON keys on DTOs. HTML is not rendered from event `message` without escaping in the dashboard.
 
 ## API keys
 
@@ -63,7 +68,11 @@ On create/update **and** before each request:
    - multicast / unspecified
 4. Connect to the resolved address (not blindly to hostname after a redirect to a new host). **Do not follow redirects** in MVP (max 0).
 5. Timeout **5s**. Limit response body read (e.g. 8 KiB) for logging.
-6. Sign body: `X-PulseWatch-Signature: sha256=<hmac>` over raw JSON with destination secret.
+6. Sign body:
+   - `X-PulseWatch-Timestamp`: Unix seconds
+   - `X-PulseWatch-Delivery-Id`: delivery UUID
+   - `X-PulseWatch-Signature: sha256=<hmac>` of `{timestamp}.{rawBody}` using the destination secret
+   - Reject send if |now − timestamp| &gt; **300s** (replay window)
 
 Failure to pass checks → **400** on save; delivery `failed` with reason `ssrf_blocked` if something slips through at send time.
 

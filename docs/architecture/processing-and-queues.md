@@ -19,11 +19,22 @@ Redis also holds: rate limits, API-key cache, short dashboard cache. Enable **AO
 ## Ingest processor
 
 1. Load job payload (batch JSON, already size-capped).
-2. Normalize each event (trim, default severity, fingerprint for errors).
+2. Normalize each event (trim, default severity). Compute fingerprint for `type=error` (below).
 3. `INSERT` into `events` or `metric_samples` with `ON CONFLICT (project_id, event_id) DO NOTHING`.
-4. If inserted `type=error`, upsert `error_groups`.
+4. If a **new** `type=error` row was inserted, upsert `error_groups` (increment `count`, set `last_seen_at`).
 5. Per-event try/catch: poison event → log + metric, continue the batch.
 6. Job success if the batch was processed (including no-ops). Throw for infrastructure errors (Postgres down) so BullMQ retries.
+
+**Error fingerprint** if the client omits `fingerprint`:
+
+```text
+type = payload.name || payload.type || "Error"
+msg  = first line of message, lowercase, replace each digit run with "#"
+frame = first stack line (payload.stack), or ""
+fingerprint = sha256(type + "\n" + msg + "\n" + frame) hex
+```
+
+If the client sends `fingerprint`, use it after validating length ≤ 128 and charset `[A-Za-z0-9._:/-]`.
 
 **Do not** update `request_rollups` here.
 
@@ -51,7 +62,9 @@ Channel adapter: email or webhook. Writes `notification_deliveries`. Retries bel
 
 | Job | Attempts | Backoff | Then |
 |---|---|---|---|
-| ingest | 5 | Exponential | BullMQ failed set; increment `ingest_jobs_failed` metric |
+| ingest | 5 | Exponential | BullMQ **failed set (DLQ)**; metric `ingest_jobs_failed` |
+
+Failed set is the dead-letter queue. `removeOnComplete`: keep last 1000. `removeOnFail`: keep last 5000. No replay UI in MVP.
 | notify (webhook) | 8 | Exponential, cap | `deliveries.status=failed` |
 | notify (email) | 5 | Exponential | same |
 | rollup / alert-eval | 3 | Short | Next scheduled run; log error |

@@ -15,7 +15,8 @@
 | **Metric sample** | A custom gauge/counter point in `metric_samples` (not mixed into `events`). |
 | **Rollup** | Pre-aggregated 1-minute request stats in `request_rollups` (dashboard + alerts). |
 | **Watermark** | Per-project cursor of how far rollup processing has read. |
-| **Fingerprint** | Stable hash used to group similar errors. |
+| **Fingerprint** | Stable hash used to group similar errors. Algorithm: [processing-and-queues.md](../architecture/processing-and-queues.md). |
+| **Error rate** | `error_count / request_count` as a **ratio** (0.05 = 5%), never a 0–100 integer. |
 | **Error group** | Aggregated error identity (`error_groups`) with count and last seen. |
 | **Ingest** | Write path: authenticate, validate, enqueue, 202. |
 | **Worker** | Process that consumes queues and runs repeatable jobs. |

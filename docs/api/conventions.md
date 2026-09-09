@@ -64,6 +64,7 @@ Never include stack traces or SQL. `details` is optional.
 | `FORBIDDEN` | 403 | Authenticated but role insufficient |
 | `NOT_FOUND` | 404 | Unknown **or** other tenant’s resource |
 | `CONFLICT` | 409 | Duplicate slug/email/membership |
+| `LIMIT_EXCEEDED` | 409 | Org/project resource cap |
 | `PAYLOAD_TOO_LARGE` | 413 | Body or field over limit |
 | `RATE_LIMITED` | 429 | Include `Retry-After` |
 | `DEPENDENCY_UNAVAILABLE` | 503 | Redis/Postgres down as specified |
@@ -96,6 +97,10 @@ Never include stack traces or SQL. `details` is optional.
 
 class-validator / Zod on DTOs. Extra JSON properties: **forbid** (`whitelist`). Strings trimmed. Enums exact.
 
+## OpenAPI
+
+From Phase 1, expose Swagger at `/api/docs` in **non-production** (or behind auth). DTOs are the contract; keep them aligned with [endpoints.md](./endpoints.md).
+
 ## Versioning
 
 Only `/api/v1` in MVP. Breaking changes require `/api/v2` later, not silent field reuse.
@@ -103,4 +108,5 @@ Only `/api/v1` in MVP. Breaking changes require `/api/v2` later, not silent fiel
 ## Related
 
 - [endpoints.md](./endpoints.md)
+- [examples.md](./examples.md)
 - [../security.md](../security.md)

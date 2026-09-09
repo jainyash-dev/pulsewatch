@@ -80,7 +80,7 @@ The author already has professional experience with Node.js, TypeScript, NestJS,
 
 ### Alerting and notifications
 
-- FR22. Users can CRUD threshold alert rules per project (error count, error rate, avg duration, failed request count, endpoint error rate).
+- FR22. Users can CRUD threshold alert rules per project (`error_count`, `error_rate`, `avg_duration_ms`, `endpoint_error_rate`). Rate thresholds are **ratios** (0.05 = 5%).
 - FR23. Rules evaluate on a schedule against rollups over a time window.
 - FR24. Alerts have state (`ok` / `alerting`), cooldown, and optional notify-on-resolve.
 - FR25. Destinations: email and webhook. Delivery is asynchronous with retries and stored history.
@@ -102,7 +102,7 @@ The author already has professional experience with Node.js, TypeScript, NestJS,
 | NFR3 | Read consistency | Events may take a few seconds to appear (202 before persist) |
 | NFR4 | Query | Indexed list queries p95 &lt; 300ms at demo scale |
 | NFR5 | Durability | At-least-once processing; duplicates collapsed by `(project_id, event_id)` |
-| NFR6 | Isolation | Cross-tenant reads must fail (403/404); covered by tests |
+| NFR6 | Isolation | Cross-tenant reads must fail with **404**; covered by tests |
 | NFR7 | Retention | Raw events 14 days; rollups 90 days (configurable later) |
 | NFR8 | Scale honesty | Designed for tens of events/sec per project, not Datadog volume |
 | NFR9 | Secrets | Env / secret manager only; never committed |

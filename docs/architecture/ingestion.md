@@ -36,14 +36,16 @@ No JWT. No other ingest URLs in MVP (typed paths would only wrap this handler).
 
 `type` is `log` | `error` | `request` | `metric`.
 
-| Type | Distinct fields (others ignored or null) |
-|---|---|
-| `log` | `severity`, `message`, `payload` |
-| `error` | `severity` (default `error`), `message`, `payload.stack`, optional `fingerprint`, optional request fields |
-| `request` | `endpoint`, `httpMethod`, `statusCode`, `durationMs` |
-| `metric` | `payload.name` or `name`, `value`, `metricType` `gauge` \| `counter` |
+| Type | Required | Optional / notes |
+|---|---|---|
+| `log` | `message` | `severity` (default `info`), `payload` |
+| `error` | `message` | `severity` default `error`; `payload.stack`; `fingerprint`; request fields if the error is HTTP-related |
+| `request` | `endpoint`, `httpMethod`, `statusCode`, `durationMs` | |
+| `metric` | `name`, `value`, `metricType` (`gauge` \| `counter`) | not stored in `events`; worker writes `metric_samples` |
 
-If `eventId` is missing, the API generates a UUID. The SDK should always send one so retries are idempotent. If `timestamp` is missing, use server now. Reject timestamps too far in the future (clamp or 400 — **clamp** and log).
+`payload.tags`: optional `string[]`, max **20** tags, each 1–64 chars `[a-z0-9_.:-]`. Stored in JSONB only — **no tag filter in MVP query** (would need GIN).
+
+If `eventId` is missing, the API generates a UUID. The SDK should always send one so retries are idempotent. If `timestamp` is missing, use server now. Timestamps more than **1 hour** in the future are **clamped** to now (log a warning). Timestamps older than retention are still accepted but may be deleted by the next sweep.
 
 ## Limits
 

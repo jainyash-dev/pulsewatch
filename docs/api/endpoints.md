@@ -156,6 +156,10 @@ Query: `status`, `from`, `to`, `cursor` or offset — **offset OK** (small cardi
 
 Includes group + last N events (e.g. 20) for that fingerprint.
 
+### `PATCH .../error-groups/:groupId`
+
+W. Body: `{ "status": "open" | "resolved" }`. **200** group.
+
 ### `GET .../metrics`
 
 Query: `name`, `from`, `to`, `environment`, `cursor`. Short ranges only (reject `to - from` > 48h with 400).
@@ -171,7 +175,7 @@ Prefix: `/organizations/:orgId/projects/:projectId/dashboard`
 Query: `range=15m|1h|24h|7d` (required), `environment?`.
 
 **200** `{ data: { requestCount, errorCount, errorRate, avgDurationMs, maxDurationMs, p95DurationMs, health } }`  
-`health`: `healthy` \| `degraded` \| `down` (define: no traffic → `healthy`; error rate ≥ 5% → `degraded`; ≥ 20% or no success with traffic → `down` — document in code constants).
+`health`: `healthy` \| `degraded` \| `down`. Canonical rules in [dashboard.md](../dashboard.md).
 
 `p95DurationMs` may be `null` if histogram empty.
 
