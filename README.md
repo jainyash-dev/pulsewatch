@@ -4,7 +4,7 @@ A lightweight, multi-tenant observability and alerting platform (Datadog/Sentry-
 
 This is a **backend-first** portfolio project: event-driven ingest, queues, tenancy, and reliability matter more than dashboard polish.
 
-**Status:** Phase 0 — documentation **complete**. Application code has not started. Next: **Phase 1 Foundation** ([docs/development/phases.md](./docs/development/phases.md)).
+**Status:** Phase 1 — Foundation **complete**. Next: **Phase 2 Authentication and multi-tenancy** ([docs/development/phases.md](./docs/development/phases.md)).
 
 ## What it does
 
@@ -102,7 +102,34 @@ Added after Phase 5 (dashboard exists). Until then, architecture and API docs ar
 
 ## Local setup
 
-Compose, env, and scripts land in **Phase 1 — Foundation**. Target topology: [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md).
+Prerequisites: Docker, Node 22, pnpm. Stop a Homebrew Postgres on **5432** if it fights Compose.
+
+```bash
+pnpm install
+cp .env.example .env
+docker compose up -d
+pnpm db:generate
+pnpm db:migrate
+pnpm --filter @pulsewatch/database build
+```
+
+Then three terminals:
+
+```bash
+pnpm --filter api start:dev
+pnpm --filter worker start:dev
+pnpm --filter web dev
+```
+
+| What                                | URL                                       |
+| ----------------------------------- | ----------------------------------------- |
+| Web stub (rewrites `/api/v1` → API) | http://localhost:3000                     |
+| API live                            | http://localhost:3001/api/v1/health/live  |
+| API ready                           | http://localhost:3001/api/v1/health/ready |
+| Swagger (non-prod)                  | http://localhost:3001/api/docs            |
+| Mailpit                             | http://localhost:8025                     |
+
+Topology: [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md). Commands: [docs/development/implementation.md](./docs/development/implementation.md).
 
 ## License
 

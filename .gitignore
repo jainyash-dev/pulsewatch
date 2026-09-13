@@ -17,4 +17,5 @@ coverage/
 .idea/
 .vscode/
 .cursor/
+.turbo/
 INTERVIEW_PREP.md
