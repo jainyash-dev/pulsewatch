@@ -14,7 +14,7 @@ The original `Project_Guide.md` brief has been retired. Do not recreate a single
 
 ## Documentation batches
 
-Docs batches A–E are **complete**. Do not start Phase 1 Foundation until the human asks for it.
+Docs batches A–E are **complete**. Phase 1 Foundation is **complete**. Next implementation, when asked: **Phase 2 — Authentication and multi-tenancy**.
 
 | Batch | Status | Contents |
 |---|---|---|

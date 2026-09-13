@@ -1,6 +1,6 @@
 # Implementation notes
 
-How to write code. Phase 0 (including Batch E) is complete. Start **Phase 1 Foundation** only when asked.
+How to write code. Phase 0 and Phase 1 Foundation are complete. Next implementation, when asked: **Phase 2 — Authentication and multi-tenancy**.
 
 ## Coding standards
 
@@ -24,16 +24,22 @@ Prerequisites: Docker, Node 22, pnpm.
 ```bash
 pnpm install
 cp .env.example .env
-docker compose up -d postgres redis mailpit
-pnpm --filter @pulsewatch/database prisma migrate dev
-pnpm dev
+docker compose up -d
+pnpm db:generate
+pnpm db:migrate
+pnpm --filter @pulsewatch/database build
+pnpm --filter api start:dev
+pnpm --filter worker start:dev
+pnpm --filter web dev
 ```
 
-- API: http://localhost:3001/api/v1/health/live
-- Web: http://localhost:3000
+- API live: http://localhost:3001/api/v1/health/live
+- API ready: http://localhost:3001/api/v1/health/ready
+- Swagger (non-prod): http://localhost:3001/api/docs
+- Web stub: http://localhost:3000 (rewrites `/api/v1` → `:3001`)
 - Mailpit: http://localhost:8025
 
-Exact `package.json` script names are created in Phase 1; keep this file in sync then.
+Root scripts: `db:generate`, `db:migrate`, `lint`, `format:check`, `typecheck`.
 
 ## Definition of done (engineering)
 

@@ -16,13 +16,15 @@ Replace the old single brief with the tight `docs/` tree.
 | D — Satellite | **Done** | SDK, dashboard, observability, local/prod, testing, CI/CD, ops |
 | E — Agent rules | **Done** | `.cursor/rules` + `AGENTS.md` |
 
-**No production application code in Phase 0.** Next implementation, when requested: **Phase 1 — Foundation**.
+**No production application code in Phase 0.** Phase 1 Foundation is **complete**. Next implementation, when requested: **Phase 2 — Authentication and multi-tenancy**.
 
-## Phase 1 — Foundation
+## Phase 1 — Foundation (**complete**)
 
-Monorepo (pnpm, Turbo), TypeScript strict, NestJS API, NestJS worker (idle-healthy), Next.js stub, PostgreSQL, Prisma (connection + migrate plumbing), Redis, Mailpit, Docker Compose, env example, ESLint, Prettier, health/live/ready, structured logs, request IDs, `@nestjs/swagger` at `/api/docs` (non-prod), basic GitHub Actions.
+Monorepo (pnpm, Turbo), TypeScript strict, NestJS API, NestJS worker (idle-healthy), Next.js stub, PostgreSQL, Prisma (connection + migrate plumbing), Redis, Mailpit, Docker Compose, env example, oxlint, Prettier, health/live/ready, request IDs, `@nestjs/swagger` at `/api/docs` (non-prod), GitHub Actions (`lint` / `format:check` / `typecheck`).
 
-**Not in Phase 1:** JWT, ingest, BullMQ processors, dashboard charts.
+**Landed:** `apps/api` (`GET /api/v1/health/live` + `/ready`), `apps/worker` (boot ping, no public port), `apps/web` (port 3000, rewrite `/api/v1` → API), `packages/database` (no product tables).
+
+**Not in Phase 1:** JWT, ingest, BullMQ processors, dashboard charts, JSON access logs (Nest logger only).
 
 ## Phase 2 — Authentication and multi-tenancy
 
