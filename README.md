@@ -121,13 +121,13 @@ pnpm --filter worker start:dev
 pnpm --filter web dev
 ```
 
-| What | URL |
-|---|---|
-| Web stub (rewrites `/api/v1` → API) | http://localhost:3000 |
-| API live | http://localhost:3001/api/v1/health/live |
-| API ready | http://localhost:3001/api/v1/health/ready |
-| Swagger (non-prod) | http://localhost:3001/api/docs |
-| Mailpit | http://localhost:8025 |
+| What                                | URL                                       |
+| ----------------------------------- | ----------------------------------------- |
+| Web stub (rewrites `/api/v1` → API) | http://localhost:3000                     |
+| API live                            | http://localhost:3001/api/v1/health/live  |
+| API ready                           | http://localhost:3001/api/v1/health/ready |
+| Swagger (non-prod)                  | http://localhost:3001/api/docs            |
+| Mailpit                             | http://localhost:8025                     |
 
 Topology: [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md). Commands: [docs/development/implementation.md](./docs/development/implementation.md).
 
