@@ -1,0 +1,25 @@
+{
+  "name": "pulsewatch",
+  "private": true,
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:generate": "prisma generate --schema packages/database/prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema packages/database/prisma/schema.prisma",
+    "db:studio": "prisma studio --schema packages/database/prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "prisma": "^6.16.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0"
+  }
+}

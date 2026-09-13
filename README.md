@@ -45,45 +45,45 @@ ADRs: [docs/decisions](./docs/decisions/README.md). Tradeoffs: [principles](./do
 
 ## Stack
 
-| Layer | Choice |
-|---|---|
-| API / worker | Node.js, TypeScript, NestJS |
-| Web | Next.js, TypeScript, React |
-| Data | PostgreSQL, Prisma |
-| Queue / cache | Redis, BullMQ |
-| Auth | JWT + refresh tokens; hashed project API keys |
-| Tests | Jest, Supertest, Playwright (later) |
-| Local | Docker Compose |
-| CI | GitHub Actions |
-| Prod design | AWS (ECS, RDS, ElastiCache, SES, CloudFront) |
+| Layer         | Choice                                        |
+| ------------- | --------------------------------------------- |
+| API / worker  | Node.js, TypeScript, NestJS                   |
+| Web           | Next.js, TypeScript, React                    |
+| Data          | PostgreSQL, Prisma                            |
+| Queue / cache | Redis, BullMQ                                 |
+| Auth          | JWT + refresh tokens; hashed project API keys |
+| Tests         | Jest, Supertest, Playwright (later)           |
+| Local         | Docker Compose                                |
+| CI            | GitHub Actions                                |
+| Prod design   | AWS (ECS, RDS, ElastiCache, SES, CloudFront)  |
 
 ## Documentation
 
 Start at **[docs/README.md](./docs/README.md)**.
 
-| Topic | Doc |
-|---|---|
-| Requirements | [docs/product/requirements.md](./docs/product/requirements.md) |
-| MVP and definition of done | [docs/product/mvp.md](./docs/product/mvp.md) |
-| Out of scope | [docs/product/out-of-scope.md](./docs/product/out-of-scope.md) |
-| Glossary | [docs/product/glossary.md](./docs/product/glossary.md) |
-| Architecture | [docs/architecture/overview.md](./docs/architecture/overview.md) |
-| Data flow | [docs/architecture/data-flow.md](./docs/architecture/data-flow.md) |
-| ADRs | [docs/decisions](./docs/decisions/README.md) |
-| Database | [docs/database/schema.md](./docs/database/schema.md) |
-| API | [conventions](./docs/api/conventions.md), [endpoints](./docs/api/endpoints.md), [examples](./docs/api/examples.md) |
-| Security | [docs/security.md](./docs/security.md) |
-| Reliability | [docs/reliability.md](./docs/reliability.md) |
-| SDK | [docs/sdk.md](./docs/sdk.md) |
-| Dashboard | [docs/dashboard.md](./docs/dashboard.md) |
-| Testing | [docs/testing.md](./docs/testing.md) |
-| Local / AWS | [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md) |
-| Engineering rules | [docs/architecture/principles.md](./docs/architecture/principles.md) |
-| Phases | [docs/development/phases.md](./docs/development/phases.md) |
-| Phase 0 coverage | [docs/development/phase-0-coverage.md](./docs/development/phase-0-coverage.md) |
-| Repo layout | [docs/development/repo-structure.md](./docs/development/repo-structure.md) |
-| Contributing | [CONTRIBUTING.md](./CONTRIBUTING.md) |
-| Agent | [AGENTS.md](./AGENTS.md) |
+| Topic                      | Doc                                                                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Requirements               | [docs/product/requirements.md](./docs/product/requirements.md)                                                     |
+| MVP and definition of done | [docs/product/mvp.md](./docs/product/mvp.md)                                                                       |
+| Out of scope               | [docs/product/out-of-scope.md](./docs/product/out-of-scope.md)                                                     |
+| Glossary                   | [docs/product/glossary.md](./docs/product/glossary.md)                                                             |
+| Architecture               | [docs/architecture/overview.md](./docs/architecture/overview.md)                                                   |
+| Data flow                  | [docs/architecture/data-flow.md](./docs/architecture/data-flow.md)                                                 |
+| ADRs                       | [docs/decisions](./docs/decisions/README.md)                                                                       |
+| Database                   | [docs/database/schema.md](./docs/database/schema.md)                                                               |
+| API                        | [conventions](./docs/api/conventions.md), [endpoints](./docs/api/endpoints.md), [examples](./docs/api/examples.md) |
+| Security                   | [docs/security.md](./docs/security.md)                                                                             |
+| Reliability                | [docs/reliability.md](./docs/reliability.md)                                                                       |
+| SDK                        | [docs/sdk.md](./docs/sdk.md)                                                                                       |
+| Dashboard                  | [docs/dashboard.md](./docs/dashboard.md)                                                                           |
+| Testing                    | [docs/testing.md](./docs/testing.md)                                                                               |
+| Local / AWS                | [docs/architecture/local-and-production.md](./docs/architecture/local-and-production.md)                           |
+| Engineering rules          | [docs/architecture/principles.md](./docs/architecture/principles.md)                                               |
+| Phases                     | [docs/development/phases.md](./docs/development/phases.md)                                                         |
+| Phase 0 coverage           | [docs/development/phase-0-coverage.md](./docs/development/phase-0-coverage.md)                                     |
+| Repo layout                | [docs/development/repo-structure.md](./docs/development/repo-structure.md)                                         |
+| Contributing               | [CONTRIBUTING.md](./CONTRIBUTING.md)                                                                               |
+| Agent                      | [AGENTS.md](./AGENTS.md)                                                                                           |
 
 ## Ingest example
 
